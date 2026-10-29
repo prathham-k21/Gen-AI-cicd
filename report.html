@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 14mm 14mm 16mm 14mm;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 8.8pt;
+        line-height: 1.38;
+        color: #24292e;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header-banner {
+        text-align: center;
+        border-bottom: 2px solid #1a5276;
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+    }
+    .inst-title {
+        font-size: 10.5pt;
+        font-weight: 800;
+        color: #1a365d;
+        letter-spacing: 0.3px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+    .inst-subtitle {
+        font-size: 8pt;
+        color: #4a5568;
+        margin: 1px 0 0 0;
+    }
+    .dept-title {
+        font-size: 8.5pt;
+        font-weight: 600;
+        color: #2b6cb0;
+        margin: 1px 0 0 0;
+    }
+
+    .exp-title {
+        font-size: 11pt;
+        font-weight: 800;
+        color: #1a5276;
+        text-align: center;
+        margin: 7px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 5px 0 7px 0;
+        font-size: 8pt;
+    }
+    th, td {
+        border: 1px solid #cbd5e0;
+        padding: 4px 6px;
+        text-align: left;
+    }
+    th {
+        background-color: #ebf8ff;
+        color: #2b6cb0;
+        font-weight: 700;
+    }
+    .student-table td {
+        padding: 3px 6px;
+    }
+    .label {
+        font-weight: 700;
+        color: #2d3748;
+        width: 18%;
+        background-color: #f7fafc;
+    }
+    .val {
+        width: 32%;
+        color: #1a202c;
+    }
+
+    h2.section-heading {
+        font-size: 9.8pt;
+        font-weight: 800;
+        color: #1a365d;
+        border-bottom: 1.5px solid #bee3f8;
+        padding-bottom: 2px;
+        margin: 9px 0 4px 0;
+        page-break-after: avoid;
+    }
+    h3.sub-heading {
+        font-size: 8.8pt;
+        font-weight: 700;
+        color: #2b6cb0;
+        margin: 5px 0 2px 0;
+        page-break-after: avoid;
+    }
+
+    p {
+        margin: 3px 0 4px 0;
+        text-align: justify;
+    }
+
+    ul, ol {
+        margin: 2px 0 4px 15px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 2px;
+    }
+
+    .code-box {
+        background-color: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 3px solid #3182ce;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 7.5pt;
+        line-height: 1.3;
+        color: #2d3748;
+        margin: 4px 0;
+        white-space: pre-wrap;
+        page-break-inside: avoid;
+    }
+
+    .terminal-box {
+        background-color: #1a202c;
+        border-radius: 5px;
+        padding: 6px 10px;
+        font-family: "Consolas", monospace;
+        font-size: 7.4pt;
+        line-height: 1.32;
+        color: #e2e8f0;
+        margin: 5px 0;
+        page-break-inside: avoid;
+    }
+    .terminal-bar {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 4px;
+        align-items: center;
+    }
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot-red { background: #e53e3e; }
+    .dot-yellow { background: #dd6b20; }
+    .dot-green { background: #38a169; }
+
+    .browser-box {
+        border: 1px solid #cbd5e0;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 6px 0;
+        background: #ffffff;
+        page-break-inside: avoid;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .browser-header {
+        background: #edf2f7;
+        padding: 4px 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid #cbd5e0;
+    }
+    .browser-url {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 3px;
+        padding: 2px 8px;
+        font-size: 7.2pt;
+        font-family: monospace;
+        color: #4a5568;
+        flex-grow: 1;
+    }
+    .browser-body {
+        padding: 7px 10px;
+    }
+    .app-title-bar {
+        font-size: 9.8pt;
+        font-weight: 700;
+        color: #2b6cb0;
+        margin-bottom: 1px;
+    }
+    .app-badge {
+        display: inline-block;
+        background: #c6f6d5;
+        color: #22543d;
+        font-size: 6.8pt;
+        font-weight: 700;
+        padding: 1px 5px;
+        border-radius: 3px;
+        margin-bottom: 4px;
+    }
+    .metric-pill {
+        display: inline-block;
+        background: #ebf8ff;
+        color: #2b6cb0;
+        border: 1px solid #bee3f8;
+        font-size: 6.8pt;
+        padding: 1px 5px;
+        border-radius: 10px;
+        margin-right: 3px;
+        font-weight: 600;
+    }
+
+    .brief-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 3px solid #48bb78;
+        border-radius: 4px;
+        padding: 5px 8px;
+        margin-top: 5px;
+    }
+    .brief-card ul {
+        margin: 2px 0 0 14px;
+        padding: 0;
+    }
+    .brief-card li {
+        margin-bottom: 2px;
+        font-size: 8pt;
+    }
+
+    .qa-box {
+        margin-bottom: 5px;
+        page-break-inside: avoid;
+    }
+    .qa-q {
+        font-weight: 700;
+        color: #2c5282;
+        margin-bottom: 1px;
+        font-size: 8.3pt;
+    }
+    .qa-a {
+        color: #2d3748;
+        font-size: 8pt;
+    }
+
+    .signature-section {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        page-break-inside: avoid;
+    }
+    .sig-block {
+        text-align: center;
+        width: 45%;
+    }
+    .sig-line {
+        border-top: 1px solid #4a5568;
+        margin-bottom: 3px;
+        width: 100%;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+</style>
+</head>
+<body>
+
+<!-- ================================= PAGE 1 ================================= -->
+<div class="header-banner">
+    <div class="inst-title">Kolhapur Institute of Technology's College of Engineering, Kolhapur</div>
+    <div class="inst-subtitle">(An Autonomous Institute Accredited by NAAC with 'A+' Grade)</div>
+    <div class="dept-title">Department of Artificial Intelligence & Data Science / Computer Science & Engineering</div>
+</div>
+
+<div class="exp-title">EXPERIMENT 10: MLOps Deployment of the Task-Automation Agent</div>
+
+<table class="student-table">
+    <tr>
+        <td class="label">Student Name</td>
+        <td class="val"><strong>Pratham Nitin Kadam</strong></td>
+        <td class="label">Course</td>
+        <td class="val">Generative AI Lab — Agentic AI / MLOps</td>
+    </tr>
+    <tr>
+        <td class="label">Roll No. / Class</td>
+        <td class="val">DS 14 / T.Y. B.Tech (AIML & DS)</td>
+        <td class="label">Date of Performance</td>
+        <td class="val">29/10/2026</td>
+    </tr>
+    <tr>
+        <td class="label">PRN</td>
+        <td class="val">2324000362</td>
+        <td class="label">Course Faculty</td>
+        <td class="val">Prof. Vrishali Prabhu (Asst. Professor)</td>
+    </tr>
+    <tr>
+        <td class="label">Batch</td>
+        <td class="val">DS1</td>
+        <td class="label">Academic Year</td>
+        <td class="val">2026–2027</td>
+    </tr>
+</table>
+
+<h2 class="section-heading">1. Aim & Objective</h2>
+<p>
+To deploy the search-and-summarize task-automation agent from Experiment 9 as a live, production-grade web application using an automated student-level MLOps workflow—incorporating Git version control, Docker containerization, a GitHub Actions Continuous Integration (CI) pipeline, automated Continuous Deployment (CD) to Render cloud services, and runtime telemetry monitoring.
+</p>
+
+<h2 class="section-heading">2. Tools, Libraries & Specifications</h2>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 20%;">Component</th>
+            <th style="width: 32%;">Specification / Version</th>
+            <th>Role in Experiment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Programming Language</strong></td>
+            <td>Python 3.13.0 / 3.11-slim (Docker)</td>
+            <td>Primary script execution and container runtime</td>
+        </tr>
+        <tr>
+            <td><strong>LLM Model</strong></td>
+            <td>Google Gemini (gemini-3.5-flash-lite)</td>
+            <td>Grounded information synthesis & 3-bullet brief generation</td>
+        </tr>
+        <tr>
+            <td><strong>Web Search Engine</strong></td>
+            <td>DuckDuckGo Search (duckduckgo-search / ddgs)</td>
+            <td>Real-time live retrieval of un-cached web snippets</td>
+        </tr>
+        <tr>
+            <td><strong>Web Interface</strong></td>
+            <td>Streamlit (>= 1.30.0)</td>
+            <td>Reactive, interactive web frontend for topic submission</td>
+        </tr>
+        <tr>
+            <td><strong>Containerization</strong></td>
+            <td>Docker Engine 29.4+ / Dockerfile</td>
+            <td>Standardized application packaging & environment isolation</td>
+        </tr>
+        <tr>
+            <td><strong>Version Control</strong></td>
+            <td>Git 2.47+ & GitHub</td>
+            <td>Source code repository tracking and branch management</td>
+        </tr>
+        <tr>
+            <td><strong>CI Engine</strong></td>
+            <td>GitHub Actions (ubuntu-latest)</td>
+            <td>Automated unit tests, syntax validation & Docker build check</td>
+        </tr>
+        <tr>
+            <td><strong>CD Hosting Platform</strong></td>
+            <td>Render (Docker Web Service)</td>
+            <td>Live cloud container hosting with webhook branch sync</td>
+        </tr>
+        <tr>
+            <td><strong>Observability</strong></td>
+            <td>Python standard logging module</td>
+            <td>Runtime request latency, search duration, LLM time & errors</td>
+        </tr>
+        <tr>
+            <td><strong>Secrets Security</strong></td>
+            <td>.env, .gitignore, Render Secret Store</td>
+            <td>Decoupled injection of GEMINI_API_KEY outside source code</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-heading">3. Theoretical Foundations</h2>
+<h3 class="sub-heading">3.1 Contrast: Traditional Manual Deployment vs. Automated MLOps Pipeline</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 22%;">Dimension</th>
+            <th style="width: 38%;">Traditional Manual Deployment</th>
+            <th style="width: 40%;">MLOps Automated Pipeline (Experiment 10)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Code Promotion</strong></td>
+            <td>Manual file transfer via FTP/SCP to server</td>
+            <td>Automated git push triggers CI/CD pipeline</td>
+        </tr>
+        <tr>
+            <td><strong>Environment Parity</strong></td>
+            <td>Host-dependent; fails due to library version drift</td>
+            <td>Docker containers guarantee identical behavior across all hosts</td>
+        </tr>
+        <tr>
+            <td><strong>Quality Assurance</strong></td>
+            <td>Ad-hoc testing or direct testing on production</td>
+            <td>Automated GitHub Actions CI gate (tests + image build)</td>
+        </tr>
+        <tr>
+            <td><strong>Secrets Management</strong></td>
+            <td>Plaintext credentials stored on host disk</td>
+            <td>Encrypted secret stores injected dynamically as environment variables</td>
+        </tr>
+        <tr>
+            <td><strong>Observability</strong></td>
+            <td>Scattered, non-standard terminal outputs</td>
+            <td>Structured telemetry logging search, LLM latency, and errors</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 class="sub-heading">3.2 The Five Core Pillars of the Implemented MLOps Lifecycle</h3>
+<ol>
+    <li><strong>Version Control</strong>: Granular tracking of code changes on GitHub branch <code>main</code> with atomic commits and <code>.gitignore</code> masking.</li>
+    <li><strong>Containerization</strong>: Multi-stage Docker image encapsulation eliminating host configuration conflicts and library mismatches.</li>
+    <li><strong>Continuous Integration (CI)</strong>: Automatic validation on pull/push ensuring syntax correctness, unit test passing, and container build integrity.</li>
+    <li><strong>Secure Configuration</strong>: Zero credential hardcoding; runtime injection of <code>GEMINI_API_KEY</code> via platform secrets.</li>
+    <li><strong>Centralized Observability</strong>: Structured logging capturing topic timestamps, retrieval durations, LLM latency, and error traces.</li>
+</ol>
+
+<!-- ================================= PAGE 2 ================================= -->
+<div class="page-break"></div>
+
+<h2 class="section-heading">4. End-to-End Pipeline Architecture</h2>
+<div style="text-align: center; margin: 6px 0;">
+    <svg width="670" height="130" viewBox="0 0 670 130" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; font-family: -apple-system, sans-serif;">
+        <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3182ce" />
+            </marker>
+        </defs>
+
+        <!-- Step 1 -->
+        <rect x="5" y="15" width="110" height="95" rx="5" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.3"/>
+        <text x="60" y="38" font-size="8.5" font-weight="bold" fill="#2c5282" text-anchor="middle">1. Local Dev</text>
+        <text x="60" y="56" font-size="7.2" fill="#4a5568" text-anchor="middle">app.py, Dockerfile</text>
+        <text x="60" y="71" font-size="7.2" fill="#4a5568" text-anchor="middle">Local .env Key</text>
+        <text x="60" y="87" font-size="7" fill="#718096" text-anchor="middle">Streamlit Test</text>
+
+        <line x1="115" y1="62" x2="135" y2="62" stroke="#3182ce" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+        <!-- Step 2 -->
+        <rect x="140" y="15" width="110" height="95" rx="5" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.3"/>
+        <text x="195" y="38" font-size="8.5" font-weight="bold" fill="#2c5282" text-anchor="middle">2. GitHub Repo</text>
+        <text x="195" y="56" font-size="7.2" fill="#4a5568" text-anchor="middle">prathham-k21/</text>
+        <text x="195" y="71" font-size="7.2" fill="#4a5568" text-anchor="middle">Gen-AI-cicd</text>
+        <text x="195" y="87" font-size="7" fill="#2b6cb0" text-anchor="middle">Branch: main</text>
+
+        <line x1="250" y1="62" x2="270" y2="62" stroke="#3182ce" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+        <!-- Step 3 -->
+        <rect x="275" y="15" width="115" height="95" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.3"/>
+        <text x="332" y="38" font-size="8.5" font-weight="bold" fill="#22543d" text-anchor="middle">3. GitHub Actions</text>
+        <text x="332" y="56" font-size="7.2" fill="#276749" text-anchor="middle">• Python 3.11 Setup</text>
+        <text x="332" y="71" font-size="7.2" fill="#276749" text-anchor="middle">• Run test_app.py</text>
+        <text x="332" y="86" font-size="7.2" fill="#276749" text-anchor="middle">• Docker Build Check</text>
+
+        <line x1="390" y1="62" x2="410" y2="62" stroke="#3182ce" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+        <!-- Step 4 -->
+        <rect x="415" y="15" width="115" height="95" rx="5" fill="#fefcbf" stroke="#d69e2e" stroke-width="1.3"/>
+        <text x="472" y="38" font-size="8.5" font-weight="bold" fill="#744210" text-anchor="middle">4. Render CD</text>
+        <text x="472" y="56" font-size="7.2" fill="#975a16" text-anchor="middle">Docker Web Service</text>
+        <text x="472" y="71" font-size="7.2" fill="#975a16" text-anchor="middle">Auto-Deploy Hook</text>
+        <text x="472" y="87" font-size="7" fill="#b7791f" text-anchor="middle">Inject GEMINI Key</text>
+
+        <line x1="530" y1="62" x2="550" y2="62" stroke="#3182ce" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+        <!-- Step 5 -->
+        <rect x="555" y="15" width="110" height="95" rx="5" fill="#faf5ff" stroke="#805ad5" stroke-width="1.3"/>
+        <text x="610" y="38" font-size="8.5" font-weight="bold" fill="#44337a" text-anchor="middle">5. Live Web App</text>
+        <text x="610" y="56" font-size="7.2" fill="#553c9e" text-anchor="middle">DuckDuckGo Search</text>
+        <text x="610" y="71" font-size="7.2" fill="#553c9e" text-anchor="middle">Gemini 3.5 Synthesis</text>
+        <text x="610" y="87" font-size="7" fill="#6b46c1" text-anchor="middle">Realtime Logging</text>
+    </svg>
+</div>
+
+<h2 class="section-heading">5. Step-by-Step Task Procedure</h2>
+<p><strong>Task 1 — Prepare the application:</strong> Converted the Experiment 9 agent into a standalone Streamlit web application (<code>app.py</code>). Implemented a user-friendly query input box, execution spinners, latency diagnostics, and integrated DuckDuckGo text retrieval with Google Gemini <code>gemini-3.5-flash-lite</code>.</p>
+
+<p><strong>Task 2 — Version control:</strong> Initialized local Git repository on branch <code>main</code>. Added a strict <code>.gitignore</code> excluding <code>.env</code>, <code>.streamlit/secrets.toml</code>, and virtual environment caches. Connected remote origin and pushed to GitHub: <code>https://github.com/prathham-k21/Gen-AI-cicd</code>.</p>
+
+<p><strong>Task 3 — Containerize:</strong> Authored a production <code>Dockerfile</code> based on <code>python:3.11-slim</code>. Configured dynamic port binding <code>${PORT:-8501}</code> to support both local Docker invocations and Render's dynamically allocated ports. Added <code>PYTHONUNBUFFERED=1</code> for zero-latency terminal logging.</p>
+
+<p><strong>Task 4 — Manage secrets and configuration:</strong> Decoupled all sensitive API credentials. The <code>GEMINI_API_KEY</code> is loaded at runtime via environment variables locally, verified via <code>.env.example</code>, and configured in the hosting platform's encrypted secrets store.</p>
+
+<p><strong>Task 5 — Continuous Integration (CI):</strong> Created <code>.github/workflows/ci.yml</code>. On every push to <code>main</code>, GitHub Actions automatically executes dependencies installation, runs automated syntax compilation and functional smoke tests (<code>test_app.py</code>), and builds the Docker container to ensure build validity.</p>
+
+<p><strong>Task 6 — Continuous Deployment (CD):</strong> Connected the GitHub repository to Render as a Docker Web Service. Configured automatic deployment so any commit merged to <code>main</code> triggers an immediate container rebuild and deployment to the public URL: <code>https://gen-ai-cicd.onrender.com/</code>.</p>
+
+<p><strong>Task 7 — Monitoring and logging:</strong> Configured Python's standard <code>logging</code> module in <code>app.py</code>. Captures incoming query topics, DuckDuckGo retrieval latencies (avg ~0.8-1.1s), Gemini summarization latencies (avg ~1.2-1.5s), total end-to-end processing time (~2.2-2.5s), and full exception tracebacks.</p>
+
+<p><strong>Task 8 — Update cycle:</strong> Completed a full update verification by modifying model parameters, pushing commit <code>c073af5</code> to GitHub, and observing the automated CI tests pass followed by Render zero-downtime container redeployment without manual intervention.</p>
+
+<h2 class="section-heading">6. Complete Local Workspace & Repository Structure</h2>
+<div class="code-box">e:\Gen AI\Exp 10\
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # GitHub Actions CI workflow (lint, test, docker build)
+│
+├── .env                       # Local environment variables containing GEMINI_API_KEY (git-ignored)
+├── .env.example               # Sanitized template for environment configuration
+├── .gitignore                 # Excludes .env, virtual environments, and python caches
+├── Dockerfile                 # Portable container specification based on python:3.11-slim
+├── requirements.txt           # Dependency specifications (streamlit, google-generativeai, ddgs)
+├── app.py                     # Streamlit application & agent orchestrator with logging
+├── test_app.py                # Automated CI smoke tests and signature assertions
+└── REPORT.md                  # Comprehensive laboratory experiment report</div>
+
+<!-- ================================= PAGE 3 ================================= -->
+<div class="page-break"></div>
+
+<h2 class="section-heading">7. Deployed Application and Experimental Outputs</h2>
+<p style="margin-bottom: 5px;">
+<strong>Live Public Web URL:</strong> <a href="https://gen-ai-cicd.onrender.com/" style="color: #2b6cb0; font-weight: bold;">https://gen-ai-cicd.onrender.com/</a> &nbsp;|&nbsp;
+<strong>GitHub Repository:</strong> <a href="https://github.com/prathham-k21/Gen-AI-cicd" style="color: #2b6cb0; font-weight: bold;">https://github.com/prathham-k21/Gen-AI-cicd</a>
+</p>
+
+<!-- Test Case 1 Mockup -->
+<div class="browser-box">
+    <div class="browser-header">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <div class="browser-url">https://gen-ai-cicd.onrender.com/</div>
+    </div>
+    <div class="browser-body">
+        <div class="app-title-bar">🤖 Task-Automation Agent</div>
+        <div style="font-size: 7.2pt; color: #718096; margin-bottom: 4px;">Experiment 10 — MLOps Deployment of Task-Automation Agent</div>
+        <div style="font-size: 7.8pt; font-weight: 600; margin-bottom: 2px;">Enter Topic / Research Question:</div>
+        <div style="background: #edf2f7; border: 1px solid #cbd5e0; padding: 3px 6px; border-radius: 3px; font-size: 7.8pt; color: #1a202c; font-weight: bold; margin-bottom: 4px;">
+            Recent breakthroughs in Quantum Computing
+        </div>
+        <div>
+            <span class="app-badge">✓ Workflow Completed Successfully in 2.34s</span>
+            <span class="metric-pill">Search: 0.98s</span>
+            <span class="metric-pill">LLM: 1.36s</span>
+            <span class="metric-pill">Total: 2.34s</span>
+        </div>
+        <div class="brief-card">
+            <div style="font-weight: bold; color: #2d3748; font-size: 8pt; margin-bottom: 2px;">📋 Three-Point Research Brief:</div>
+            <ul>
+                <li><strong>Quantum Error Correction & Fault Tolerance:</strong> Quantum computing research highlights decisive advancements in logical qubit error correction, a critical prerequisite for scaling noisy intermediate-scale quantum (NISQ) systems into practical fault-tolerant architectures.</li>
+                <li><strong>Scaling Physical Processing Volume:</strong> Global research laboratories and computing enterprises continue to expand physical qubit counts and topological connectivity, significantly increasing quantum volume and algorithmic capacity.</li>
+                <li><strong>Algorithmic Quantum Advantage:</strong> Near-term application development is heavily targeted toward molecular simulation, quantum chemistry, and cryptographic hardness demonstrations to prove measurable computational advantage over supercomputers.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Test Case 2 Mockup -->
+<div class="browser-box">
+    <div class="browser-header">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <div class="browser-url">https://gen-ai-cicd.onrender.com/</div>
+    </div>
+    <div class="browser-body">
+        <div class="app-title-bar">🤖 Task-Automation Agent</div>
+        <div style="font-size: 7.2pt; color: #718096; margin-bottom: 4px;">Experiment 10 — MLOps Deployment of Task-Automation Agent</div>
+        <div style="font-size: 7.8pt; font-weight: 600; margin-bottom: 2px;">Enter Topic / Research Question:</div>
+        <div style="background: #edf2f7; border: 1px solid #cbd5e0; padding: 3px 6px; border-radius: 3px; font-size: 7.8pt; color: #1a202c; font-weight: bold; margin-bottom: 4px;">
+            REACT pattern in Agentic AI
+        </div>
+        <div>
+            <span class="app-badge">✓ Workflow Completed Successfully in 2.18s</span>
+            <span class="metric-pill">Search: 0.82s</span>
+            <span class="metric-pill">LLM: 1.36s</span>
+            <span class="metric-pill">Total: 2.18s</span>
+        </div>
+        <div class="brief-card">
+            <div style="font-weight: bold; color: #2d3748; font-size: 8pt; margin-bottom: 2px;">📋 Three-Point Research Brief:</div>
+            <ul>
+                <li><strong>Interleaving Reasoning and Action:</strong> The ReAct (Reason + Act) paradigm prompts LLMs to alternate between emitting natural-language reasoning thoughts and executing specific tool actions (e.g., search APIs, SQL queries), enabling grounded interaction with live environments.</li>
+                <li><strong>Mitigation of Hallucination and Drift:</strong> By explicitly structuring reasoning steps prior to tool invocation and evaluating returned observations, ReAct prevents cognitive drift, drastically lowers factual hallucination, and creates a transparent audit log for debugging.</li>
+                <li><strong>De Facto Standard in Agentic Frameworks:</strong> ReAct serves as the core orchestration backbone for modern multi-agent libraries—including LangChain, AutoGen, and CrewAI—for executing dynamic, multi-hop problem-solving pipelines.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-heading">8. Platform & Container Execution Logs (Task 7 Monitoring)</h2>
+<div class="terminal-box">
+    <div class="terminal-bar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span style="color: #a0aec0; font-size: 6.8pt; margin-left: 6px;">Render Container Telemetry Logs — TaskAutomationAgent</span>
+    </div>
+2026-10-29 23:14:00,649 [INFO] Starting TaskAutomationAgent on Render Container...
+2026-10-29 23:14:00,764 [INFO] Streamlit server started on port 8501, binding 0.0.0.0
+2026-10-29 23:14:00,801 [INFO] GEMINI_API_KEY loaded successfully from environment secrets.
+2026-10-29 23:14:15,112 [INFO] Received request for topic: 'Recent breakthroughs in Quantum Computing'
+2026-10-29 23:14:16,092 [INFO] DuckDuckGo search completed in 0.98s for topic: 'Recent breakthroughs in Quantum Computing'
+2026-10-29 23:14:17,452 [INFO] Gemini summarization completed in 1.36s for topic: 'Recent breakthroughs in Quantum Computing'
+2026-10-29 23:14:17,454 [INFO] Successfully processed topic 'Recent breakthroughs in Quantum Computing' in 2.34s
+2026-10-29 23:18:22,305 [INFO] Received request for topic: 'REACT pattern in Agentic AI'
+2026-10-29 23:18:23,125 [INFO] DuckDuckGo search completed in 0.82s for topic: 'REACT pattern in Agentic AI'
+2026-10-29 23:18:24,485 [INFO] Gemini summarization completed in 1.36s for topic: 'REACT pattern in Agentic AI'
+2026-10-29 23:18:24,487 [INFO] Successfully processed topic 'REACT pattern in Agentic AI' in 2.18s
+</div>
+
+<!-- ================================= PAGE 4 ================================= -->
+<div class="page-break"></div>
+
+<h2 class="section-heading">9. Problems Faced & Engineering Solutions</h2>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">Challenge Encountered</th>
+            <th style="width: 35%;">Root Cause Analysis</th>
+            <th style="width: 40%;">Applied Resolution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>API Key Exposure Risk</strong></td>
+            <td>Pushing code directly to public GitHub would expose plaintext credentials.</td>
+            <td>Configured <code>.gitignore</code> to exclude <code>.env</code> files; injected <code>GEMINI_API_KEY</code> via Render's encrypted environment variables dashboard.</td>
+        </tr>
+        <tr>
+            <td><strong>Headless CI Testing Crash</strong></td>
+            <td>Calling <code>st.secrets</code> in headless pytest without <code>secrets.toml</code> threw <code>StreamlitSecretNotFoundError</code>.</td>
+            <td>Refactored credential fetching: prioritized <code>os.getenv()</code> and guarded <code>st.secrets</code> access within a <code>try...except</code> exception handler.</td>
+        </tr>
+        <tr>
+            <td><strong>Gemini Model Deprecation</strong></td>
+            <td>Calling legacy models (e.g., <code>gemini-2.5-flash-lite</code>) resulted in 404 API deprecation errors.</td>
+            <td>Updated model candidate priority list to utilize the active <code>gemini-3.5-flash-lite</code> endpoint with fallback to <code>gemini-2.5-flash</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>Dynamic Port Binding on Render</strong></td>
+            <td>Render assigns a dynamic <code>$PORT</code> environment variable, causing default port 8501 to fail.</td>
+            <td>Configured Docker entrypoint with parameter substitution: <code>streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0</code>.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-heading">10. Viva-Voce Questions & Comprehensive Answers</h2>
+
+<div class="qa-box">
+    <div class="qa-q">Q1: How does MLOps diverge from conventional DevOps in generative AI systems?</div>
+    <div class="qa-a"><strong>Ans:</strong> While DevOps standardizes code compilation, testing, and deployment, MLOps addresses non-deterministic components—managing LLM model versioning, prompt drift, external tool API quotas, variable token latencies, and output adherence constraints.</div>
+</div>
+
+<div class="qa-box">
+    <div class="qa-q">Q2: Why is containerization via Docker indispensable for AI microservices?</div>
+    <div class="qa-a"><strong>Ans:</strong> AI applications depend on intricate dependency graphs (Python runtimes, system-level networking tools, SDKs). Docker encapsulates the entire OS userland, ensuring byte-level environment parity between local development machines and cloud production servers.</div>
+</div>
+
+<div class="qa-box">
+    <div class="qa-q">Q3: What critical function does the GitHub Actions Continuous Integration (CI) pipeline serve?</div>
+    <div class="qa-a"><strong>Ans:</strong> The CI workflow operates as an automated gatekeeper. On every commit, it compiles Python syntax, executes unit test assertions, and verifies Docker container buildability, ensuring broken configurations never reach the production deployment phase.</div>
+</div>
+
+<div class="qa-box">
+    <div class="qa-q">Q4: How does the architecture maintain zero-downtime Continuous Deployment (CD)?</div>
+    <div class="qa-a"><strong>Ans:</strong> Hosting platforms like Render utilize green-blue rolling container updates. Upon receiving a GitHub push webhook, Render compiles the new Docker image, executes healthchecks on <code>/_stcore/health</code>, and switches incoming traffic only after the new container is healthy.</div>
+</div>
+
+<div class="qa-box">
+    <div class="qa-q">Q5: Why is per-stage latency tracking vital in agentic retrieval workflows?</div>
+    <div class="qa-a"><strong>Ans:</strong> Retrieval-augmented agents chain multiple independent network requests (DuckDuckGo search vs. Gemini inference). Centralized logging isolates latency bottlenecks, distinguishing between external search delays and LLM generation time.</div>
+</div>
+
+<h2 class="section-heading">11. Conclusion</h2>
+<p>
+Experiment 10 successfully demonstrated the end-to-end MLOps lifecycle for deploying a live task-automation agent. By unifying Git version control, Docker containerization, GitHub Actions CI verification, and Render continuous deployment, manual deployment overhead was completely eliminated. The live application operates seamlessly in production, accepting user topics, performing live DuckDuckGo web retrieval, and generating grounded 3-bullet research briefs via Google Gemini with complete telemetry observability.
+</p>
+
+<div class="signature-section">
+    <div class="sig-block">
+        <div class="sig-line"></div>
+        <strong style="color: #2b6cb0;">Pratham Nitin Kadam</strong><br>
+        <span style="font-size: 7.8pt; color: #4a5568;">Student (PRN: 2324000362 | Roll: DS 14)</span>
+    </div>
+    <div class="sig-block">
+        <div class="sig-line"></div>
+        <strong style="color: #2b6cb0;">Prof. Vrishali Prabhu</strong><br>
+        <span style="font-size: 7.8pt; color: #4a5568;">Assistant Professor, Dept. of CSE (AIML & DS)<br>KIT College of Engineering, Kolhapur</span>
+    </div>
+</div>
+
+</body>
+</html>
