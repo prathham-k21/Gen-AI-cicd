@@ -61,7 +61,11 @@ with st.sidebar:
 def search_duckduckgo(topic: str, max_results: int = 5) -> str:
     """Queries DuckDuckGo and formats raw text results."""
     try:
-        from duckduckgo_search import DDGS
+        try:
+            from ddgs import DDGS
+        except ImportError:
+            from duckduckgo_search import DDGS
+            
         ddgs = DDGS()
         results = list(ddgs.text(topic, max_results=max_results))
         
@@ -97,8 +101,8 @@ Guidelines:
 Search Results:
 {raw_search_results}
 """
-    # Attempt with available Gemini models
-    candidate_models = ["gemini-1.5-flash", "gemini-2.5-flash-lite", "gemini-1.5-pro"]
+    # Candidate Gemini models in priority order
+    candidate_models = ["gemini-3.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
     last_err = None
     for model_name in candidate_models:
         try:
