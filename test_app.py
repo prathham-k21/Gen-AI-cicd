@@ -1,7 +1,12 @@
 """
 Automated unit and smoke tests for CI pipeline.
 """
+import warnings
 import inspect
+
+# Suppress streamlit thread warnings during headless CI import
+warnings.filterwarnings("ignore")
+
 import app
 
 def test_imports_and_definitions():

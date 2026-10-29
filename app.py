@@ -28,8 +28,12 @@ st.set_page_config(
 
 # Fetch API Key from environment or Streamlit secrets
 API_KEY = os.getenv("GEMINI_API_KEY")
-if not API_KEY and hasattr(st, "secrets") and "GEMINI_API_KEY" in st.secrets:
-    API_KEY = st.secrets["GEMINI_API_KEY"]
+if not API_KEY:
+    try:
+        if hasattr(st, "secrets") and "GEMINI_API_KEY" in st.secrets:
+            API_KEY = st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        pass
 
 # Sidebar configuration
 with st.sidebar:
