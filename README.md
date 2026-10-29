@@ -115,3 +115,4 @@ GitHub Actions workflow configured in `.github/workflows/ci.yml`:
 - [ ] Live URL on Render / Hugging Face Spaces.
 - [ ] Live application screenshots showing 3-bullet research briefs for 2 different topics.
 - [ ] Platform logs screenshot showing request duration and logging details.
+

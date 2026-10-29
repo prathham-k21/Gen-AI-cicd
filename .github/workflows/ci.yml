@@ -39,3 +39,4 @@ jobs:
         context: .
         push: false
         tags: task-automation-agent:latest
+
